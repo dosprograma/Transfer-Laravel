@@ -4,20 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class TransferController extends Controller
 {
     public function index(){
 
-        return view('FormUser');
+        return view('UserTransfer');
     }
-
 
     public function salvar(Request $req){
 
-
-    }
-
-    public function atualizar(Request $req){
 
 
     }
