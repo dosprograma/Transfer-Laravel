@@ -13,7 +13,7 @@ class CreateAccountTable extends Migration
      */
     public function up()
     {
-        Schema::create('account', function (Blueprint $table) {
+        Schema::create('accounts', function (Blueprint $table) {
             $table->bigIncrements('idConta', true)->unsigned();
             $table->unsignedBigInteger('usuarioId')->unsined();
             $table->string('agencia');
