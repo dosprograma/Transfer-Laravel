@@ -34,8 +34,10 @@ class UserController extends Controller
 
             $dados2 = [
                 'idConta' => null,
+                'usuarioId' => $iduser,
                 'agencia' => '36954-6',
                 'conta' => rand([3652],[4000]).'-9',
+                'saldo' => 0.0,
             ];
 
             $conta = new Account($dados2);

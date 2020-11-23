@@ -18,6 +18,7 @@ class CreateAccountTable extends Migration
             $table->unsignedBigInteger('usuarioId')->unsined();
             $table->string('agencia');
             $table->string('conta');
+            $table->double('saldo');
             $table->timestamps();
         });
     }

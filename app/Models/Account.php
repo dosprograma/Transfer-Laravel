@@ -20,5 +20,6 @@ class Account extends Model
         'usuarioId',
         'agencia',
         'conta',
+        'saldo',
     ];
 }

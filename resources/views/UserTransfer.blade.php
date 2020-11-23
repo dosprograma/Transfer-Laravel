@@ -14,10 +14,12 @@
         <div class="row" >
             <div class="mx-auto p-4 col-lg-7">
                 <h1 class="mb-4">Realizar Transferência</h1>
-                <form>
+                <form method="post" action="{{route('transferencia_salvar')}}">
+                    {!! csrf_field() !!}
                     <div class="form-row">
                         <div class="form-group col-md-6"> <input type="text" class="form-control" id="form27" placeholder="Agência"> </div>
-                        <div class="form-group col-md-6"> <input type="email" class="form-control" id="form28" placeholder="Conta"> </div>
+                        <div class="form-group col-md-6"> <input type="text" class="form-control" id="form28" placeholder="Conta"> </div>
+                        <div class="form-group col-md-6"> <input type="number" class="form-control" id="form28" placeholder="Valor"> </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>

@@ -10,7 +10,9 @@
     <div class="container">
         <div class="row">
             <div class="mx-auto col-lg-6 col-10">
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="post" action={{route('usuario_salvar')}}>
+                    {!! csrf_field() !!}
+
                     <fieldset>
 
                         <!-- Form Name -->
@@ -20,7 +22,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="Nome">Nome:</label>
                             <div class="col-md-4">
-                                <input id="Nome" name="Nome" type="text" placeholder="Digite seu Nome aqui" class="form-control input-md">
+                                <input id="nome" name="nome" type="text" placeholder="Digite seu Nome aqui" class="form-control input-md">
 
                             </div>
                         </div>
