@@ -14,8 +14,8 @@
         <div class="row" >
             <div class="mx-auto p-4 col-lg-7">
                 <h1 class="mb-4">Realizar Transferência</h1>
-                <form method="post" action="{{route('transferencia_salvar')}}">
-                    {!! csrf_field() !!}
+                <form method="post" action="/TransferSave">
+                    @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6"> <input type="text" class="form-control" id="form27" placeholder="Agência"> </div>
                         <div class="form-group col-md-6"> <input type="text" class="form-control" id="form28" placeholder="Conta"> </div>
