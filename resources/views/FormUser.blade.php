@@ -6,6 +6,21 @@
 </head>
 
 <body >
+<nav class="navbar navbar-expand-lg navbar-light" >
+    <div class="container"> <a class="navbar-brand text-primary" href="#">
+            <i class="fa d-inline fa-lg fa-circle-o"></i>
+        </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar5">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar5">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('/Transfer') }}">Transferência</a> </li>
+                <li class="nav-item" > <a class="nav-link" href="{{ route('/') }}">Cadastro</a> </li>
+            </ul>
+            <a class="btn btn-outline-primary navbar-btn ml-md-2">Sair</a>
+        </div>
+    </div>
+</nav>
 <div class="py-5 text-center bg-light">
     <div class="container">
         <div class="row">
