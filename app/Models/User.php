@@ -13,12 +13,13 @@ class User extends Authenticatable
 
 
     public function conta() {
-        return $this->hasOne('App\Models\Account', 'usuarioId');
+        return $this->belongsTo('App\Models\Account', 'contaId');
     }
 
     protected $primaryKey = 'idUsuario';
 
     protected $fillable = [
+        'contaId',
         'nome',
         'CPF',
         'endereco',

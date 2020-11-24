@@ -1,8 +1,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="theme.css" type="text/css">
+
+    <link rel="stylesheet" href="{{asset('css/theme.css') }}" type="text/css">
 </head>
 
 <body >
@@ -10,68 +10,19 @@
     <div class="container">
         <div class="row">
             <div class="mx-auto col-lg-6 col-10">
-                <form class="form-horizontal" method="post" action={{route('usuario_salvar')}}>
-                    {!! csrf_field() !!}
+                <h1 class="mb-4">Cadastro de Usuário</h1>
+                <form method="post" action="{{ route('userSave') }}">
+                    @csrf
+                    <div class="form-row">
+                        <div class="form-group col-md-6"> <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"> </div>
+                        <div class="form-group col-md-6"> <input type="text" class="form-control" id="CPF" name="CPF" placeholder="CPF"> </div>
+                        <div class="form-group col-md-6"> <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço"> </div>
+                        <div class="form-group col-md-6"> <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone"> </div>
+                        <div class="form-group col-md-6"> <input type="email" class="form-control" id="email" name="email" placeholder="E-mail"> </div>
+                        <div class="form-group col-md-6"> <input type="password" class="form-control" id="password" name="password" placeholder="Senha"> </div>
 
-                    <fieldset>
-
-                        <!-- Form Name -->
-                        <legend>Cadastro de Clientes</legend>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Nome">Nome:</label>
-                            <div class="col-md-4">
-                                <input id="nome" name="nome" type="text" placeholder="Digite seu Nome aqui" class="form-control input-md">
-
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="cpf">CPF:</label>
-                            <div class="col-md-4">
-                                <input id="cpf" name="cpf" type="text" placeholder="Digite seu CPF aqui" class="form-control input-md">
-
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="endereco">Endereço: </label>
-                            <div class="col-md-4">
-                                <input id="endereco" name="endereco" type="text" placeholder="Digite seu Endereço aqui" class="form-control input-md">
-
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="telefne">Telefone:</label>
-                            <div class="col-md-4">
-                                <input id="telefne" name="telefne" type="text" placeholder="Digite seu Telefone aqui" class="form-control input-md">
-
-                            </div>
-                        </div>
-
-                        <!-- Password input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="senha">Senha:</label>
-                            <div class="col-md-4">
-                                <input id="senha" name="senha" type="password" placeholder="Digite sua Senha aqui" class="form-control input-md">
-
-                            </div>
-                        </div>
-
-                        <!-- Button -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Salvar"></label>
-                            <div class="col-md-4">
-                                <button id="Salvar" name="Salvar" class="btn btn-primary">Salvar</button>
-                            </div>
-                        </div>
-
-                    </fieldset>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
             </div>
         </div>

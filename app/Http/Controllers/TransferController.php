@@ -2,61 +2,59 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\User;
 use App\Models\Account;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TransferController extends Controller
 {
-    public function index(){
+    public function index()
+    {
+        $dadosUsuarioLogado = Auth::user();
+        $dadosDaConta = $saldoDoUsuarioLogado = Account::query()
+            ->where('idConta', $dadosUsuarioLogado->contaId)
+            ->first();
 
+        $registros = $dadosDaConta->saldo;
 
-
-        return view('UserTransfer');
+        return view('UserTransfer', compact('registros'));
     }
 
-    public function salvar(Request $req){
-        dd();
+    public function salvar(Request $req)
+    {
 
-        try {
+        return DB::transaction(function () use ($req) {
+            $valorParaTransferir = $req->input('valor');
+            $usuarioLogado = Auth::user();
 
-            $saldo = User::where('idUsuario', 1)->first();
+            $contaDoUsuarioLogado = $usuarioLogado->contaId;
 
-            $valor = $saldo->saldo;
+            $saldoDoUsuarioLogado = Account::query()
+                ->where('idConta', $contaDoUsuarioLogado)
+                ->first();
 
-            $conta = Account::where('conta', $req->input('conta'))->first();
+            $contaAlvo = Account::query()
+                ->where('conta', $req->input('conta'))
+                ->where('agencia', $req->input('agencia'))
+                ->first();
 
-            $user = $conta->usuarioId;
+            $saldoAlvo = $contaAlvo->saldo;
 
-            $saldo2 = User::where('idUsuario', 2);
-
-            $saldoa = $saldo2->saldo;
-
-
-            if ($req->input('valor') <= $valor) {
-
-                $deposito = array(
-                    'saldo' => ($valor - $req->input('valor'))
-                );
-                Account::where('usuarioId', 1)->update($deposito);
-
-                $insere = array(
-                    'saldo' => ($saldoa + $req->input('valor'))
-                );
-
-                Account::where('usuarioId', 2)->update($insere);
-
-
-                return redirect()->back()->with('alert-success', 'Transação realizada com sucesso!');
-            } else
+            if ($valorParaTransferir > $saldoDoUsuarioLogado->saldo) {
                 return redirect()->back()->with('alert-danger', 'Não é possivel retirar um valor maior que o disponível.');
+            }
 
-        } catch (\Exception $e) {
-            return redirect()->back()->with('alert-error', 'Um ou mais campos estão incorretos.');
-        }
+            $saldoDoUsuarioLogado->update([
+                'saldo' => $saldoDoUsuarioLogado->saldo - $valorParaTransferir
+            ]);
+
+            $contaAlvo->update([
+                'saldo' => $saldoAlvo + $valorParaTransferir
+            ]);
+
+            return redirect()->back()->with('alert-success', 'Transação realizada com sucesso!');
+        });
     }
-
-
 }
