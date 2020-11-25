@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Html\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::post('password/email', [ForgotPasswordController::class, 'password.email'])->name('password.email');
 
@@ -19,7 +20,8 @@ Route::get('password/reset/{token}', [ResetPasswordController::class, 'password.
 
 Route::post('password/reset', [ResetPasswordController::class, 'resetar.senha'])->name('resetar.senha')->middleware('auth');
 
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('logout',[LoginController::class, 'logout'])->name('logout');

@@ -17,7 +17,12 @@
                 <li class="nav-item"> <a class="nav-link" href="{{ route('/Transfer') }}">Transferência</a> </li>
                 <li class="nav-item" > <a class="nav-link" href="{{ route('/') }}">Cadastro</a> </li>
             </ul>
-            <a class="btn btn-outline-primary navbar-btn ml-md-2">Sair</a>
+            <form class="" method="POST" action="{{route('logout')}}">
+                @csrf
+                <li class="nav-item button-green">
+                    <button type="submit" class="btn btn-outline-dark">Logout<br></button>
+                </li>
+            </form>
         </div>
     </div>
 </nav>
