@@ -15,6 +15,7 @@ class AccountSeeder extends Seeder
     public function run()
     {
         $conta = new Account([
+            'usuarioId' => 1,
             'agencia' => '36954-6',
             'conta' =>'3254-9',
             'saldo' => 5000.36
@@ -22,6 +23,7 @@ class AccountSeeder extends Seeder
         $conta->save();
 
         $conta2 = new Account([
+            'usuarioId' => 2,
             'agencia' => '36954-6',
             'conta' =>'3563-9',
             'saldo' => 5000.36

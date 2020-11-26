@@ -15,6 +15,7 @@ class CreateAccountTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->bigIncrements('idConta', true)->unsigned();
+            $table->unsignedBigInteger('usuarioId')->unsined();
             $table->string('agencia');
             $table->string('conta');
             $table->double('saldo');

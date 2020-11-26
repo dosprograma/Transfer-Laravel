@@ -16,7 +16,6 @@ class UserSeeder extends Seeder
     public function run()
     {
         $usuario = new User([
-            'contaId' => 1,
             'nome' => 'Lopez',
             'CPF' => '000.000.000/00',
             'endereco' => 'Rua azul, 208 Guarapuava',
@@ -28,7 +27,6 @@ class UserSeeder extends Seeder
         $usuario->save();
 
         $usuario2 = new User([
-            'contaId' => 2,
             'nome' => 'Paulo',
             'CPF' => '063.040.080/00',
             'endereco' => 'Rua rosa, 218 Guarapuava',

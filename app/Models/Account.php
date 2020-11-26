@@ -13,10 +13,11 @@ class Account extends Model
 
     public function usuario()
     {
-        return $this->hasOne('App\User', 'contaId');
+        return $this->BelongsTo('App\Models\User', 'usuarioId');
     }
 
     protected $fillable = [
+        'usuarioId',
         'agencia',
         'conta',
         'saldo',

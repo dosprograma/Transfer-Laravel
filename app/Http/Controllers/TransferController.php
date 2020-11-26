@@ -14,7 +14,7 @@ class TransferController extends Controller
     {
         $dadosUsuarioLogado = Auth::user();
         $dadosDaConta = $saldoDoUsuarioLogado = Account::query()
-            ->where('idConta', $dadosUsuarioLogado->contaId)
+            ->where('usuarioId', $dadosUsuarioLogado->idUsuario)
             ->first();
 
         $registros = $dadosDaConta->saldo;
@@ -32,7 +32,7 @@ class TransferController extends Controller
             $contaDoUsuarioLogado = $usuarioLogado->contaId;
 
             $saldoDoUsuarioLogado = Account::query()
-                ->where('idConta', $contaDoUsuarioLogado)
+                ->where('usuarioId', $usuarioLogado->idUsuario)
                 ->first();
 
             $contaAlvo = Account::query()

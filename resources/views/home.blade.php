@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Bem vindo(a)') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,7 +15,27 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+
+                        <form>
+                            <table class="table" style="">
+                                <thead>
+                                <tr>
+                                    <th>Saldo Disponível:</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr>
+                                    <th scope="row">{{$registros}}</th>
+                                    <td> <a class="nav-link" href="{{ route('/Transfer') }}"> Transferir </a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </form>
+
+
+
+
                 </div>
             </div>
         </div>

@@ -11,15 +11,14 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-
-    public function conta() {
-        return $this->belongsTo('App\Models\Account', 'contaId');
-    }
-
     protected $primaryKey = 'idUsuario';
 
+    public function conta() {
+        return $this->hasOne('App\Models\Account', 'usuarioId');
+    }
+
+
     protected $fillable = [
-        'contaId',
         'nome',
         'CPF',
         'endereco',
